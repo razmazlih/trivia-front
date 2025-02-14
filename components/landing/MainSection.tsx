@@ -28,7 +28,7 @@ const MainSection = () => {
         <div>
             <section>
                 <h1 className="text-3xl lg:text-4xl lg:mt-10 text-center font-bold">
-                    Welcome to TriviaMaster!
+                    Welcome to TriviaLink!
                 </h1>
                 <p className="mt-4 text-gray-500 text-center text-lg">
                     Dive into the world of trivia and challenge your knowledge!
