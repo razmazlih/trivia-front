@@ -9,11 +9,13 @@ import {
     NavbarMenuItem,
     NavbarMenuToggle,
 } from '@heroui/react';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { FaBrain } from 'react-icons/fa';
 
 const MainNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const pathname = usePathname();
 
     type Colors = "foreground" | "primary" | "secondary" | "success" | "warning" | "danger"
 
@@ -32,7 +34,7 @@ const MainNavbar = () => {
 
     return (
         <div>
-            <Navbar>
+            <Navbar onMenuOpenChange={setIsMenuOpen} isBordered={pathname !== '/'}>
                 <NavbarBrand>
                     <FaBrain size={24} color="#F85455" />
                     <p className="ml-2 font-bold">TriviaMaster</p>
