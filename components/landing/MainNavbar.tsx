@@ -33,7 +33,7 @@ const MainNavbar = () => {
     ]
 
     return (
-        <div>
+        <div className='w-full'>
             <Navbar onMenuOpenChange={setIsMenuOpen} isBordered={pathname !== '/'}>
                 <NavbarBrand>
                     <FaBrain size={24} color="#F85455" />
