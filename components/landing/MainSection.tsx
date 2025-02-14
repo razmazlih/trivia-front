@@ -12,15 +12,11 @@ const MainSection = () => {
         setWindowWidth(window.innerWidth);
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
-        
+
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    if (!isClient) {
-        return null; // לא מרנדר כלום עד שהלקוח מוכן
-    }
 
     return (
         <div>
@@ -42,27 +38,29 @@ const MainSection = () => {
                     Start the Trivia
                 </Button>
             </div>
-            <section className="flex flex-wrap justify-center gap-16 mt-10 lg:mt-16 lg:gap-20">
-                <Image
-                    as={nextImage}
-                    shadow="lg"
-                    alt="lamp"
-                    src="/lamp.png"
-                    width={windowWidth > 768 ? 300 : 200}
-                    height={windowWidth > 768 ? 300 : 200}
-                    className="lg:w-[500px] lg:h-[300px]"
-                    isBlurred
-                />
-                <Image
-                    as={nextImage}
-                    alt="people"
-                    src="/people.png"
-                    width={windowWidth > 768 ? 300 : 200}
-                    height={windowWidth > 768 ? 300 : 200}
-                    className="lg:w-[300px] lg:h-[300px]"
-                    isBlurred
-                />
-            </section>
+            {isClient && (
+                <section className="flex flex-wrap justify-center gap-16 mt-16 lg:mt-16 lg:gap-20">
+                    <Image
+                        as={nextImage}
+                        shadow="lg"
+                        alt="lamp"
+                        src="/lamp.png"
+                        width={windowWidth > 768 ? 250 : 200}
+                        height={windowWidth > 768 ? 250 : 200}
+                        className="lg:w-[500px] lg:h-[250px]"
+                        isBlurred
+                    />
+                    <Image
+                        as={nextImage}
+                        alt="people"
+                        src="/people.png"
+                        width={windowWidth > 768 ? 250 : 200}
+                        height={windowWidth > 768 ? 250 : 200}
+                        className="lg:w-[300px] lg:h-[300px]"
+                        isBlurred
+                    />
+                </section>
+            )}
         </div>
     );
 };
