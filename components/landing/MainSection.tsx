@@ -44,7 +44,7 @@ const MainSection = () => {
                         as={nextImage}
                         shadow="lg"
                         alt="lamp"
-                        src="/lamp.png"
+                        src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/hbxeds8ufjokl8arbvmf.png"
                         width={windowWidth > 768 ? 250 : 200}
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[500px] lg:h-[250px]"
@@ -53,7 +53,7 @@ const MainSection = () => {
                     <Image
                         as={nextImage}
                         alt="people"
-                        src="/people.png"
+                        src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/xppkjfh2luyhunh2rn0o.png"
                         width={windowWidth > 768 ? 250 : 200}
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[300px] lg:h-[300px]"
