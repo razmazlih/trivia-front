@@ -52,7 +52,7 @@ const MainNavbar = () => {
                 </NavbarContent>
                 <NavbarMenu>
                     {navbarLinks.map(({ name, href, color }) => (
-                        <NavbarMenuItem>
+                        <NavbarMenuItem key={name}>
                         <Link
                             className="w-full"
                             color={color as Colors}
