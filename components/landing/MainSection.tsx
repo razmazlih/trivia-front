@@ -51,6 +51,7 @@ const MainSection = () => {
                         className="lg:w-[500px] lg:h-[250px]"
                         isBlurred
                     />
+                    <span className='hidden sm:block'>
                     <Image
                         as={nextImage}
                         alt="people"
@@ -60,7 +61,8 @@ const MainSection = () => {
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[300px] lg:h-[300px]"
                         isBlurred
-                    />
+                        />
+                        </span>
                 </section>
             )}
         </div>
