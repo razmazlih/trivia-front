@@ -1,24 +1,27 @@
-'use client';
-import { Button, Form, Input } from '@heroui/react';
+import { usePlayer } from '@/contsxt/PlayerContext';
+import { Button, Input } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const EnterPlayerName = () => {
-    const [name, setName] = useState<string>('');
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [inError, setInError] = useState<boolean>(false);
+    const { setPlayerName } = usePlayer();
+    const [name, setName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [inError, setInError] = useState(false);
     const router = useRouter();
 
-    const hundleClick = () => {
+    const handleClick = () => {
         setInError(false);
-        if (name) {
-            console.log(`Welcome ${name}!`);
+        if (name.length > 1) {
+            localStorage.setItem('playerName', name);
+            setPlayerName(name);
             setIsLoading(true);
             router.push('/game');
         } else {
             setInError(true);
         }
     };
+
     return (
         <div className="mt-5">
             <div className="flex gap-3 justify-center w-full">
@@ -27,7 +30,7 @@ const EnterPlayerName = () => {
                         value={name}
                         onValueChange={setName}
                         placeholder="Enter your Name"
-                        errorMessage="please Enter your Name"
+                        errorMessage="please Enter your Name (at least 2 characters)"
                         isInvalid={inError}
                     />
                 </div>
@@ -36,7 +39,7 @@ const EnterPlayerName = () => {
                         isLoading={isLoading}
                         color="primary"
                         type="submit"
-                        onPress={hundleClick}
+                        onPress={handleClick}
                     >
                         Start New Trivia Game
                     </Button>

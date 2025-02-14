@@ -1,9 +1,15 @@
-import React from 'react'
+'use client';
+import { usePlayer } from '@/contsxt/PlayerContext';
+import React, { useEffect } from 'react';
 
 const GamePage = () => {
-  return (
-    <div>GamePage</div>
-  )
-}
+    const { playerName } = usePlayer();
 
-export default GamePage
+    return (
+        <div>
+            <h1>Welcome, {playerName || 'Guest'}!</h1>
+        </div>
+    );
+};
+
+export default GamePage;
