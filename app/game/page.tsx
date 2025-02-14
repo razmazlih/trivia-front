@@ -7,7 +7,21 @@ const GamePage = () => {
 
     return (
         <div>
+            <div>
             <h1>Welcome, {playerName || 'Guest'}!</h1>
+            </div>
+            <div>
+                question
+            </div>
+            <div>
+                answers
+            </div>
+            <div>
+                submit
+            </div>
+            <div>
+                progress
+            </div>
         </div>
     );
 };

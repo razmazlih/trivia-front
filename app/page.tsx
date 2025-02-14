@@ -1,5 +1,5 @@
-import MainHeader from '@/components/MainHeader';
-import StartGame from '@/components/StartGame';
+import MainHeader from '@/components/welcome/MainHeader';
+import StartGame from '@/components/welcome/StartGame';
 
 const MainPage = () => {
     return (
