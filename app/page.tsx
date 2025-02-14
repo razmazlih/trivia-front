@@ -1,11 +1,9 @@
-import MainHeader from '@/components/welcome/MainHeader';
-import StartGame from '@/components/welcome/StartGame';
+import MainNavbar from "@/components/MainNavbar";
 
 const MainPage = () => {
     return (
-        <div className="flex flex-col items-center">
-            <MainHeader />
-            <StartGame />
+        <div>
+            <MainNavbar />
         </div>
     );
 };
