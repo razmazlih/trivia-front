@@ -3,7 +3,7 @@ import StartGame from '@/components/StartGame';
 
 const MainPage = () => {
     return (
-        <div className='flex flex-col items-center'>
+        <div className="flex flex-col items-center">
             <MainHeader />
             <StartGame />
         </div>

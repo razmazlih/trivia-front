@@ -10,11 +10,11 @@ import InfoSection from './InfoSection';
 export default function StartGame() {
     return (
         <div className="flex flex-col items-center">
-            <div className='w-full'>
+            <div className="w-full">
                 <EnterPlayerName />
             </div>
             <div>
-            <InfoSection />
+                <InfoSection />
             </div>
         </div>
     );
