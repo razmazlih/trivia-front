@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const MainFooter = () => {
     return (
-        <div className="flex flex-col justify-center items-center gap-3 mb-7">
+        <div className="flex flex-col justify-center items-center gap-3 mb-7 mt-14">
             <div className="flex gap-5">
                 <Link href="#" className='text-gray-950' aria-label="Facebook">
                     <FaFacebook />
