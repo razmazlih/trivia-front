@@ -1,7 +1,7 @@
 import MainHeader from '@/components/MainHeader';
 import StartGame from '@/components/StartGame';
 
-const page = () => {
+const MainPage = () => {
     return (
         <div className='flex flex-col items-center'>
             <MainHeader />
@@ -10,4 +10,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default MainPage;
