@@ -37,7 +37,7 @@ const MainNavbar = () => {
             <Navbar onMenuOpenChange={setIsMenuOpen} isBordered={pathname !== '/'}>
                 <NavbarBrand>
                     <FaBrain size={24} color="#F85455" />
-                    <p className="ml-2 font-bold">TriviaMaster</p>
+                    <p className="ml-2 font-bold">TriviaLink</p>
                 </NavbarBrand>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
