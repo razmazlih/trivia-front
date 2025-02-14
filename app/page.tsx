@@ -1,11 +1,9 @@
-import React from 'react'
+import MainHeader from '@/components/MainHeader'
 
 const page = () => {
   return (
     <div>
-      <div>
-        header
-      </div>
+      <MainHeader />
       <div>
         main
       </div>
