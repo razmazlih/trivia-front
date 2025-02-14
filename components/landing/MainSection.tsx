@@ -45,6 +45,7 @@ const MainSection = () => {
                         shadow="lg"
                         alt="lamp"
                         src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/hbxeds8ufjokl8arbvmf.png"
+                        loading='eager'
                         width={windowWidth > 768 ? 250 : 200}
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[500px] lg:h-[250px]"
@@ -54,6 +55,7 @@ const MainSection = () => {
                         as={nextImage}
                         alt="people"
                         src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/xppkjfh2luyhunh2rn0o.png"
+                        loading='eager'
                         width={windowWidth > 768 ? 250 : 200}
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[300px] lg:h-[300px]"
