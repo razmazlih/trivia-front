@@ -1,6 +1,6 @@
 'use client';
 import { usePlayer } from '@/contsxt/PlayerContext';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const GamePage = () => {
     const { playerName } = usePlayer();
