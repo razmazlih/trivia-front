@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Button, Image } from '@heroui/react';
 import nextImage from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const MainSection = () => {
     const [windowWidth, setWindowWidth] = useState<number>(0);
     const [isClient, setIsClient] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         setIsClient(true);
@@ -17,6 +19,10 @@ const MainSection = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    const handlePress = () => {
+        router.push('/game');
+    };
 
     return (
         <div>
@@ -30,6 +36,7 @@ const MainSection = () => {
             </section>
             <div className="flex justify-center mt-8 lg:mt-12">
                 <Button
+                    onPress={handlePress}
                     variant="shadow"
                     color="primary"
                     className="text-white font-semibold"
@@ -45,24 +52,24 @@ const MainSection = () => {
                         shadow="lg"
                         alt="lamp"
                         src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/hbxeds8ufjokl8arbvmf.png"
-                        loading='eager'
+                        loading="eager"
                         width={windowWidth > 768 ? 250 : 200}
                         height={windowWidth > 768 ? 250 : 200}
                         className="lg:w-[500px] lg:h-[250px]"
                         isBlurred
                     />
-                    <span className='hidden sm:block'>
-                    <Image
-                        as={nextImage}
-                        alt="people"
-                        src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/xppkjfh2luyhunh2rn0o.png"
-                        loading='eager'
-                        width={windowWidth > 768 ? 250 : 200}
-                        height={windowWidth > 768 ? 250 : 200}
-                        className="lg:w-[300px] lg:h-[300px]"
-                        isBlurred
+                    <span className="hidden sm:block">
+                        <Image
+                            as={nextImage}
+                            alt="people"
+                            src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739553448/xppkjfh2luyhunh2rn0o.png"
+                            loading="eager"
+                            width={windowWidth > 768 ? 250 : 200}
+                            height={windowWidth > 768 ? 250 : 200}
+                            className="lg:w-[300px] lg:h-[300px]"
+                            isBlurred
                         />
-                        </span>
+                    </span>
                 </section>
             )}
         </div>
