@@ -15,8 +15,7 @@ type PlayerContextType = {
 const PlayerContext = createContext<PlayerContextType | null>(null);
 
 export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
-    const [playerName, setPlayerName] = useState(
-        localStorage.getItem('playerName') || ''
+    const [playerName, setPlayerName] = useState(''
     );
 
     return (

@@ -1,7 +1,8 @@
-import { usePlayer } from '@/contsxt/PlayerContext';
-import { Button, Input } from '@heroui/react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+"use client";
+import { usePlayer } from "@/contsxt/PlayerContext";
+import { Button, Input } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const EnterPlayerName = () => {
     const { setPlayerName } = usePlayer();
@@ -13,7 +14,6 @@ const EnterPlayerName = () => {
     const handleClick = () => {
         setInError(false);
         if (name.length > 1) {
-            localStorage.setItem('playerName', name);
             setPlayerName(name);
             setIsLoading(true);
             router.push('/game');

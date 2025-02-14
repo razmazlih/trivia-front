@@ -1,9 +1,5 @@
 'use client';
-import {
-    TrophyIcon,
-    QuestionMarkCircleIcon,
-} from '@heroicons/react/24/outline';
-import { Button, Input } from '@heroui/react';
+
 import EnterPlayerName from './EnterPlayerName';
 import InfoSection from './InfoSection';
 
