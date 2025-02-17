@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const Answers = () => {
     const [selected, setSelected] = useState<number | null>(null);
@@ -16,7 +16,11 @@ const Answers = () => {
                 <p
                     key={answer.id}
                     onClick={() => setSelected(answer.id)}
-                    className={`border-2 rounded-lg px-4 py-2 text-center cursor-pointer transition-all ${answer.id === selected ? 'text-orange-600 border-orange-600 bg-orange-100' : 'border-gray-200'}`}
+                    className={`border-2 rounded-lg px-4 py-2 text-center cursor-pointer transition-all ${
+                        answer.id === selected
+                            ? 'text-orange-600 border-orange-600 bg-orange-100'
+                            : 'border-gray-200'
+                    }`}
                 >
                     {answer.answer}
                 </p>
