@@ -11,7 +11,7 @@ const Answers = () => {
             {answers.map((answer) => (
                 <p
                     key={answer.id}
-                    className="border-2 border-gray-200 rounded-lg px-4 py-2 text-center"
+                    className="border-2 border-gray-200 rounded-lg px-4 py-2 text-center cursor-pointer"
                 >
                     {answer.answer}
                 </p>
