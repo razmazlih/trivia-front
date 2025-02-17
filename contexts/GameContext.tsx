@@ -1,21 +1,49 @@
 'use client';
 
+import { fetchQuestions } from '@/lib/fetchQuestions';
 import { GameContextType, Question } from '@/lib/types';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
 interface GameProviderProps {
     children: React.ReactNode;
-    initialQuestions: Question[];
+    initialQuestions?: Question[];
 }
 
 export const GameProvider = ({
     children,
-    initialQuestions,
+    initialQuestions = [],
 }: GameProviderProps) => {
-    const [questions, setQuestions] = useState<Question[]>(initialQuestions);
+    const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedAnswers, setSelectedAnswers] = useState<
+        Record<number, string | null>
+    >({});
+
+    useEffect(() => {
+        async function loadQuestions() {
+            const stored = sessionStorage.getItem('questions');
+            if (stored) {
+                setQuestions(JSON.parse(stored));
+            } else {
+                const qs =
+                    initialQuestions.length > 0
+                        ? initialQuestions
+                        : await fetchQuestions();
+                setQuestions(qs);
+                sessionStorage.setItem('questions', JSON.stringify(qs));
+            }
+        }
+        loadQuestions();
+    }, []);
+
+    const selectAnswer = (answerId: string) => {
+        setSelectedAnswers((prev) => ({
+            ...prev,
+            [currentQuestionIndex]: answerId,
+        }));
+    };
 
     return (
         <GameContext.Provider
@@ -24,6 +52,8 @@ export const GameProvider = ({
                 currentQuestionIndex,
                 setQuestions,
                 setCurrentQuestionIndex,
+                selectedAnswers,
+                selectAnswer,
             }}
         >
             {children}
