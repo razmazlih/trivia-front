@@ -1,5 +1,9 @@
 'use client';
+
+import { useState } from "react";
+
 const Answers = () => {
+    const [selected, setSelected] = useState<number | null>(null);
     const answers = [
         { id: 1, answer: 'Paris', correct: true },
         { id: 2, answer: 'Berlin', correct: false },
@@ -11,7 +15,8 @@ const Answers = () => {
             {answers.map((answer) => (
                 <p
                     key={answer.id}
-                    className="border-2 border-gray-200 rounded-lg px-4 py-2 text-center cursor-pointer"
+                    onClick={() => setSelected(answer.id)}
+                    className={`border-2 rounded-lg px-4 py-2 text-center cursor-pointer transition-all ${answer.id === selected ? 'text-orange-600 border-orange-600 bg-orange-100' : 'border-gray-200'}`}
                 >
                     {answer.answer}
                 </p>
