@@ -22,7 +22,7 @@ const MainNavbar = () => {
     const navbarLinks = [
         {
             name: 'Home',
-            href: '#',
+            href: '/',
             color: "foreground"
         },
         {
