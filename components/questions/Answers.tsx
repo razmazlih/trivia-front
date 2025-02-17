@@ -3,12 +3,12 @@
 import { useState } from 'react';
 
 const Answers = () => {
-    const [selected, setSelected] = useState<number | null>(null);
+    const [selected, setSelected] = useState<string | null>(null);
     const answers = [
-        { id: 1, answer: 'Paris', correct: true },
-        { id: 2, answer: 'Berlin', correct: false },
-        { id: 3, answer: 'London', correct: false },
-        { id: 4, answer: 'Madrid', correct: false },
+        { id: 'a', text: 'Paris', correct: true },
+        { id: 'b', text: 'Berlin', correct: false },
+        { id: 'c', text: 'London', correct: false },
+        { id: 'd', text: 'Madrid', correct: false },
     ];
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full mt-5">
@@ -22,7 +22,7 @@ const Answers = () => {
                             : 'border-gray-200'
                     }`}
                 >
-                    {answer.answer}
+                    {answer.text}
                 </p>
             ))}
         </div>
