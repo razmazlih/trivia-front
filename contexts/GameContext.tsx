@@ -18,7 +18,7 @@ export const GameProvider = ({
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState<
-        Record<number, string | null>
+        Record<number, { questionId: number; answerId: string } | null>
     >({});
 
     useEffect(() => {
@@ -41,7 +41,10 @@ export const GameProvider = ({
     const selectAnswer = (answerId: string) => {
         setSelectedAnswers((prev) => ({
             ...prev,
-            [currentQuestionIndex]: answerId,
+            [currentQuestionIndex]: {
+                questionId: questions[currentQuestionIndex]?.id,
+                answerId,
+            },
         }));
     };
 

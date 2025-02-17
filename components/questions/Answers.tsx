@@ -12,7 +12,8 @@ const Answers: React.FC<AnswersProps> = ({ answers }) => {
                     key={answer.id}
                     onClick={() => selectAnswer(answer.id)}
                     className={`border-2 rounded-lg px-4 py-2 text-center cursor-pointer ${
-                        answer.id === selectedAnswers[currentQuestionIndex]
+                        selectedAnswers[currentQuestionIndex]?.answerId ===
+                        answer.id
                             ? 'text-orange-600 border-orange-600 bg-orange-100 transition-all'
                             : 'border-gray-200'
                     }`}
