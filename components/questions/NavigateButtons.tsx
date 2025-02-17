@@ -1,15 +1,36 @@
 'use client';
+
 import { Button } from '@heroui/react';
-import { useRouter } from 'next/navigation';
+import { useGame } from '@/contexts/GameContext';
 
 const NavigateButtons = () => {
-    const router = useRouter()
+    const { currentQuestionIndex, setCurrentQuestionIndex, questions } =
+        useGame();
+
     return (
-        <div className='flex justify-between mt-2 px-2'>
-            <Button onPress={() => router.push('/')} color="primary" className="text-white" radius="lg">
+        <div className="flex justify-between mt-2 px-2">
+            <Button
+                onPress={() => {
+                    if (currentQuestionIndex > 0) {
+                        setCurrentQuestionIndex(currentQuestionIndex - 1);
+                    }
+                }}
+                color="primary"
+                className="text-white"
+                radius="lg"
+            >
                 Previous
             </Button>
-            <Button color="primary" className="text-white" radius="lg">
+            <Button
+                onPress={() => {
+                    if (currentQuestionIndex < questions.length - 1) {
+                        setCurrentQuestionIndex(() => currentQuestionIndex + 1);
+                    }
+                }}
+                color="primary"
+                className="text-white"
+                radius="lg"
+            >
                 Next
             </Button>
         </div>
