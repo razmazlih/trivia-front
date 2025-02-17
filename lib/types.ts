@@ -15,8 +15,10 @@ export interface Question {
 export interface GameContextType {
     questions: Question[];
     currentQuestionIndex: number;
+    selectedAnswers: Record<number, string | null>;
     setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
     setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+    selectAnswer: (answerId: string) => void;
 }
 
 export interface AnswersProps {
