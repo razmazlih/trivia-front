@@ -15,8 +15,8 @@ const HeaderSection = () => {
                 as={NextImage}
                 alt="HeroUI hero Image"
                 src="https://res.cloudinary.com/drlmg8tzf/image/upload/v1739878480/happy_eatx9s.png"
-                width={300}
-                height={250}
+                width={224}
+                height={150}
                 isBlurred
                 isZoomed
                 loading='eager'
