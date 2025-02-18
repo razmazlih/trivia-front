@@ -10,10 +10,7 @@ const MainResultSection = () => {
     const [selectedAnswers, setSelectedAnswers] = useState<
         Record<number, SelectedAnswer>
     >({});
-    const [score, setScore] = useState<number>(() => {
-        const savedScore = localStorage.getItem('trivia_score');
-        return savedScore ? parseInt(savedScore, 10) : 0;
-    });
+    const [score, setScore] = useState<number>(0);
 
     useEffect(() => {
         const answers = getSelectedAnswers();
