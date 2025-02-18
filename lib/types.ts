@@ -12,13 +12,21 @@ export interface Question {
     difficulty: string;
 }
 
+export interface SelectedAnswer {
+    questionId: number;
+    answerId: string;
+    isCorrect: boolean;
+}
+
 export interface GameContextType {
     questions: Question[];
     currentQuestionIndex: number;
-    selectedAnswers: Record<number, { questionId: number; answerId: string; } | null>;
+    selectedAnswers: Record<number, SelectedAnswer>;
     setQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
     setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
     selectAnswer: (answerId: string) => void;
+    clearSelectedAnswers: () => void;  
+    getSelectedAnswers: () => Record<number, SelectedAnswer>; 
 }
 
 export interface AnswersProps {

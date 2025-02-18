@@ -1,7 +1,7 @@
 'use client';
 
 import { fetchQuestions } from '@/lib/fetchQuestions';
-import { GameContextType, Question } from '@/lib/types';
+import { GameContextType, Question, SelectedAnswer } from '@/lib/types';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -17,10 +17,8 @@ export const GameProvider = ({
 }: GameProviderProps) => {
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [selectedAnswers, setSelectedAnswers] = useState<
-        Record<number, { questionId: number; answerId: string } | null>
-    >({});
-
+    const [selectedAnswers, setSelectedAnswers] = useState<Record<number, SelectedAnswer>>({});
+    
     useEffect(() => {
         async function loadQuestions() {
             const stored = sessionStorage.getItem('questions');
@@ -49,13 +47,31 @@ export const GameProvider = ({
     }, []);
 
     const selectAnswer = (answerId: string) => {
-        setSelectedAnswers((prev) => ({
-            ...prev,
+        const currentQuestion = questions[currentQuestionIndex];
+        const isCorrect = currentQuestion?.options.find(option => option.id === answerId)?.correct || false;
+    
+        const updatedAnswers = {
+            ...selectedAnswers,
             [currentQuestionIndex]: {
-                questionId: questions[currentQuestionIndex]?.id,
+                questionId: currentQuestion?.id,
                 answerId,
+                isCorrect,
             },
-        }));
+        };
+    
+        setSelectedAnswers(updatedAnswers);
+    
+        sessionStorage.setItem('selectedAnswers', JSON.stringify(updatedAnswers));
+    };
+
+    const clearSelectedAnswers = () => {
+        sessionStorage.removeItem('selectedAnswers');
+        setSelectedAnswers({});
+    };
+    
+    const getSelectedAnswers = () => {
+        const storedAnswers = sessionStorage.getItem('selectedAnswers');
+        return storedAnswers ? JSON.parse(storedAnswers) : {};
     };
 
     return (
@@ -67,6 +83,8 @@ export const GameProvider = ({
                 setCurrentQuestionIndex,
                 selectedAnswers,
                 selectAnswer,
+                clearSelectedAnswers,
+                getSelectedAnswers,
             }}
         >
             {children}
