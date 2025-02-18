@@ -2,10 +2,12 @@
 
 import { Button } from '@heroui/react';
 import { useGame } from '@/contexts/GameContext';
+import { useRouter } from 'next/navigation';
 
 const NavigateButtons = () => {
     const { currentQuestionIndex, setCurrentQuestionIndex, questions } =
         useGame();
+    const router = useRouter();
 
     return (
         <div className="flex justify-between mt-2 px-2">
@@ -25,6 +27,8 @@ const NavigateButtons = () => {
                 onPress={() => {
                     if (currentQuestionIndex < questions.length - 1) {
                         setCurrentQuestionIndex(() => currentQuestionIndex + 1);
+                    } else {
+                        router.push('/results');
                     }
                 }}
                 color="primary"
