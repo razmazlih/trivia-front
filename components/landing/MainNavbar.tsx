@@ -34,7 +34,7 @@ const MainNavbar = () => {
 
     return (
         <div className='w-full'>
-            <Navbar onMenuOpenChange={setIsMenuOpen} isBordered={pathname !== '/'}>
+            <Navbar onMenuOpenChange={setIsMenuOpen} isBordered={pathname === '/game'}>
                 <NavbarBrand>
                     <FaBrain size={24} color="#F85455" />
                     <p className="ml-2 font-bold">TriviaLink</p>
