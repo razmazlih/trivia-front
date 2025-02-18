@@ -62,15 +62,17 @@ export const GameProvider = ({
         setSelectedAnswers(updatedAnswers);
     
         sessionStorage.setItem('selectedAnswers', JSON.stringify(updatedAnswers));
+        localStorage.setItem('selectedAnswers', JSON.stringify(updatedAnswers));
     };
 
     const clearSelectedAnswers = () => {
         sessionStorage.removeItem('selectedAnswers');
+        localStorage.removeItem('selectedAnswers')
         setSelectedAnswers({});
     };
     
     const getSelectedAnswers = () => {
-        const storedAnswers = sessionStorage.getItem('selectedAnswers');
+        const storedAnswers = sessionStorage.getItem('selectedAnswers') || localStorage.getItem('selectedAnswers');
         return storedAnswers ? JSON.parse(storedAnswers) : {};
     };
 

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { useGame } from '@/contexts/GameContext';
 import AnswersSection from './AnswersSection';
 import HeaderSection from './HeaderSection';
@@ -7,27 +7,42 @@ import { SelectedAnswer } from '@/lib/types';
 
 const MainResultSection = () => {
     const { getSelectedAnswers, questions } = useGame();
-    const [selectedAnswers, setSelectedAnswers] = useState<Record<number, SelectedAnswer>>({});
-    const [score, setScore] = useState(0);
+    const [selectedAnswers, setSelectedAnswers] = useState<
+        Record<number, SelectedAnswer>
+    >({});
+    const [score, setScore] = useState<number>(() => {
+        const savedScore = localStorage.getItem('trivia_score');
+        return savedScore ? parseInt(savedScore, 10) : 0;
+    });
 
     useEffect(() => {
         const answers = getSelectedAnswers();
         setSelectedAnswers(answers);
 
-        const correctCount = Object.values(answers).filter(answer => answer.isCorrect).length;
+        const correctCount = Object.values(answers).filter(
+            (answer) => answer.isCorrect
+        ).length;
         const totalQuestions = questions.length;
-        const calculatedScore = Math.round((correctCount / totalQuestions) * 100);
+
+        const calculatedScore =
+            totalQuestions > 0
+                ? Math.round((correctCount / totalQuestions) * 100)
+                : 0;
 
         setScore(calculatedScore);
-    }, []);
+        localStorage.setItem('trivia_score', calculatedScore.toString());
+    }, [questions]);
 
     return (
         <>
             <div className="mt-10 sm:mt-16">
-            <HeaderSection score={score} />
+                <HeaderSection score={score} />
             </div>
             <div className="w-11/12 md:w-10/12 lg: lg:w-8/12 mt-10">
-            <AnswersSection selectedAnswers={selectedAnswers} questions={questions} />
+                <AnswersSection
+                    selectedAnswers={selectedAnswers}
+                    questions={questions}
+                />
             </div>
         </>
     );
