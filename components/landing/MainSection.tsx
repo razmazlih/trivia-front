@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import { Button, Image } from '@heroui/react';
 import nextImage from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useGame } from '@/contexts/GameContext';
 
 const MainSection = () => {
+    const { clearSelectedAnswers } = useGame();
     const [windowWidth, setWindowWidth] = useState<number>(0);
     const [isClient, setIsClient] = useState(false);
     const router = useRouter();
@@ -21,6 +23,7 @@ const MainSection = () => {
     }, []);
 
     const handlePress = () => {
+        clearSelectedAnswers();
         router.push('/game');
     };
 
