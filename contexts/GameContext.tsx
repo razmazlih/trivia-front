@@ -24,7 +24,15 @@ export const GameProvider = ({
     useEffect(() => {
         async function loadQuestions() {
             const stored = sessionStorage.getItem('questions');
-            if (stored) {
+            const storedTimestamp =
+                sessionStorage.getItem('questionsTimestamp');
+
+            const now = Date.now();
+            const isExpired = storedTimestamp
+                ? now - parseInt(storedTimestamp, 10) > 300000
+                : true;
+
+            if (stored && !isExpired) {
                 setQuestions(JSON.parse(stored));
             } else {
                 const qs =
@@ -33,8 +41,10 @@ export const GameProvider = ({
                         : await fetchQuestions();
                 setQuestions(qs);
                 sessionStorage.setItem('questions', JSON.stringify(qs));
+                sessionStorage.setItem('questionsTimestamp', now.toString());
             }
         }
+
         loadQuestions();
     }, []);
 
