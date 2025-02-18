@@ -12,10 +12,10 @@ const resultPage = () => {
         <div className="mt-10 sm:mt-16">
         <HeaderSection />
         </div>
-        <div className="w-11/12 mt-10">
+        <div className="w-11/12 md:w-10/12 lg: lg:w-8/12 mt-10">
         <AnswersSection />
         </div>
-        <div className="w-11/12 mt-5">
+        <div className="w-11/12 md:w-10/12 lg: lg:w-8/12 mt-5">
           <PerformanceSection />
         </div>
         <div className="mt-10 flex-grow">
